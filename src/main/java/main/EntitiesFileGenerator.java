@@ -307,6 +307,8 @@ public class EntitiesFileGenerator {
         //String s = "";
         if (name.startsWith("WP")) {
             return "W";
+        } else if (name.contains("Military") || name.contains("Command")) {
+            return "C";
         } else if (name.startsWith("SY-") || name.contains("Ship Yard") || name.contains("Shipyard")) {
             return "SY";
         } else if (name.contains("Market")) {
@@ -349,6 +351,8 @@ public class EntitiesFileGenerator {
         String name = vesselData.getVessel(id).getName();
         if (name.contains("Industrial")) {
             return "I";
+        } else if (name.contains("Military") || name.contains("Command")) {
+            return "C";
         } else if (name.contains("Civilian")) {
             return "V";
         } else if (name.contains("Shipyard")|| name.contains("Ship Yard")) {
@@ -381,6 +385,8 @@ public class EntitiesFileGenerator {
     public String getTypeFromVesselDescription(String name) {
         if (name.contains("Industrial")) {
             return "I";
+        } else if (name.contains("Military") || name.contains("Command")) {
+            return "C";
         } else if (name.contains("Civilian")) {
             return "V";
         } else if (name.contains("Shipyard") || name.contains("Ship Yard")) {

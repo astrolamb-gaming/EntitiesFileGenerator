@@ -107,6 +107,7 @@ com\walkertribe\ian\util\BoolState.class
 com\walkertribe\ian\util\Version.class
 com\walkertribe\ian\protocol\UnknownPacket.class
 com\walkertribe\ian\Context.class
+main\EntitiesFileGenerator$4.class
 com\walkertribe\ian\enums\Console.class
 com\walkertribe\ian\vesseldata\SAXVesselDataHandler$ImpulsePointParser.class
 com\walkertribe\ian\world\ArtemisGenericObject.class
@@ -132,6 +133,7 @@ com\walkertribe\ian\iface\BaseDebugger.class
 com\walkertribe\ian\util\Matrix$Op$6.class
 com\walkertribe\ian\vesseldata\PathResolver.class
 com\walkertribe\ian\util\Util.class
+main\EntitiesFileGenerator$5.class
 com\walkertribe\ian\iface\DisconnectEvent$Cause.class
 com\walkertribe\ian\vesseldata\SAXVesselDataHandler$TorpedoStorageParser.class
 com\walkertribe\ian\vesseldata\SAXVesselDataHandler$VesselParser.class
