@@ -247,13 +247,13 @@ public class EntitiesFileGenerator {
                     if (line.contains("name")) {
                         String[] n = line.split("name=\"");
                         String[] n2 = n[1].split("\"");
-                        System.out.println(n2[0]);
+                        //System.out.println(n2[0]);
                         name = n2[0];
-                        System.out.println(name);
+                        //System.out.println(name);
                     }
                     if (line.contains("hullID")) {
                         String[] n = line.split("hullID=\"");
-                        System.out.println(n[1]);
+                        //System.out.println(n[1]);
                         String[] n2 = n[1].split("\"");
                         hullID = Integer.parseInt(n2[0]);
                     }
@@ -283,8 +283,8 @@ public class EntitiesFileGenerator {
                 }
                 int i = sector + 1;
                 if (line.contains("Sector " + i)) {
-                    System.out.println("Sector: " + i);
-                    System.out.println(line);
+                    System.out.println("\nSector: " + i);
+                    //System.out.println(line);
                     sector = i;
                 } else {
                     //sb.append(line);
@@ -311,9 +311,9 @@ public class EntitiesFileGenerator {
             return "C";
         } else if (name.startsWith("SY-") || name.contains("Ship Yard") || name.contains("Shipyard")) {
             return "SY";
-        } else if (name.contains("Market")) {
+        } else if (name.contains("Market") || name.contains("Trading")) { 
             return "V";
-        } else if (name.contains("Industrial")) {
+        } else if (name.contains("Industrial") || name.contains("Factor")) { // "Factor for factories or factory
             return "I";
         } else if (name.contains("Civilian")) {
             return "V";
@@ -325,7 +325,7 @@ public class EntitiesFileGenerator {
             return "X";
         } else if (name.contains("Research")) {
             return "R";
-        } else if (name.contains("Refinery")) {
+        } else if (name.contains("Refinery") || name.contains("Denabite")) {
             return "F";
         } else if (name.contains("Skaraan")) {
             return "SKN-B";
@@ -333,12 +333,16 @@ public class EntitiesFileGenerator {
             return "CR";
         } else if (name.contains("Sensor")) {
             return "SB";
-        } else if (name.contains("Defense Platform")) {
+        } else if (name.contains("Defense Platform") || name.contains("Defence Platform")) {
             return "DP";
-        } else if (name.contains("Defense")) {
+        } else if (name.contains("Defense") || name.contains("Defence")) {
             return "D";
         } else if (name.contains("Planet")) {
             return "P";
+        } else if (name.contains("Marker") || name.contains("Buoy")) {
+            return "MK";
+        } else if (name.contains("Station")) {
+            return "S";
         } else if (name.contains("Gate")) {
             return "G";
         } else {
@@ -349,73 +353,17 @@ public class EntitiesFileGenerator {
         System.out.println(id);
         //vesselData.
         String name = vesselData.getVessel(id).getName();
-        if (name.contains("Industrial")) {
-            return "I";
-        } else if (name.contains("Military") || name.contains("Command")) {
-            return "C";
-        } else if (name.contains("Civilian")) {
-            return "V";
-        } else if (name.contains("Shipyard")|| name.contains("Ship Yard")) {
-            return "M";
-        } else if (name.contains("Science")) {
-            return "X";
-        } else if (name.contains("Research")) {
-            return "R";
-        } else if (name.contains("Refinery")) {
-            return "F";
-        } else if (name.contains("Skaraan")) {
-            return "SKN-B";
-        } else if (name.contains("Comms")) {
-            return "CR";
-        } else if (name.contains("Sensor")) {
-            return "SB";
-        } else if (name.contains("Defense Platform")) {
-            return "DP";
-        } else if (name.contains("Defense")) {
-            return "D";
-        } else if (name.contains("Planet")) {
-            return "P";
-        } else if (name.contains("Gate")) {
-            return "G";
+        System.out.println(name + id);
+        String s = getTypeFromName(name);
+        if (!name.equals("")) {
+            return s;
         } else {
             return getTypeFromVesselDescription(vesselData.getVessel(id).getDescription());
         }
     }
     
     public String getTypeFromVesselDescription(String name) {
-        if (name.contains("Industrial")) {
-            return "I";
-        } else if (name.contains("Military") || name.contains("Command")) {
-            return "C";
-        } else if (name.contains("Civilian")) {
-            return "V";
-        } else if (name.contains("Shipyard") || name.contains("Ship Yard")) {
-            return "Y";
-        } else if (name.contains("Mining")) {
-            return "M";
-        } else if (name.contains("Science")) {
-            return "X";
-        } else if (name.contains("Research")) {
-            return "R";
-        } else if (name.contains("Refinery")) {
-            return "F";
-        } else if (name.contains("Skaraan")) {
-            return "SKN-B";
-        } else if (name.contains("Comms")) {
-            return "CR";
-        } else if (name.contains("Sensor")) {
-            return "SB";
-        } else if (name.contains("Defense Platform")) {
-            return "DP";
-        } else if (name.contains("Defense")) {
-            return "D";
-        } else if (name.contains("Planet")) {
-            return "P";
-        } else if (name.contains("Gate")) {
-            return "G";
-        } else {
-            return "";
-        }
+        return getTypeFromName(name);
     }
     
     public void loadVesselData(File file) {
